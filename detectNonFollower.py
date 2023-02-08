@@ -3,14 +3,14 @@ import json
 with open('following.json') as file:
     following_json = json.load(file)
 
-with open('followers.json') as file:
+with open('followers_1.json') as file:
     followers_json = json.load(file)
 
 people_not_following = []
 for following in following_json["relationships_following"]:
     people_not_following.append(following["string_list_data"][0]["value"])
 
-for follower in followers_json["relationships_followers"]:
+for follower in followers_json:
     follower = follower["string_list_data"][0]["value"]
     if follower in people_not_following:
         people_not_following.remove(follower)
